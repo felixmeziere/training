@@ -94,16 +94,14 @@ platform :ios do
   end
 
   lane :deploy do |options|
-    setup
-    build
-    if ENV['DEPLOYMENT_PLATFORM'] === 'hockeyapp' then
-      deploy_hockey
-    else
-      pilot(
-        distribute_external: false,
-        skip_waiting_for_build_processing: true
-      )
-    end
+    # setup
+    # build
+    mobile_center_upload(
+      api_token: '05479798dc670ef217a1818f4123112f1e9b8dcd',
+      owner_name: 'felixm',
+      app_name: 'mb-ios',
+      ipa: ENV['IOS_IPA_PATH']
+    )
   end
 
   lane :deploy_local do |options|
@@ -132,9 +130,12 @@ platform :android do
 
   lane :deploy do |options|
     # build
-    if ENV['DEPLOYMENT_PLATFORM'] === 'hockeyapp' then
-      deploy_hockey
-    end
+    mobile_center_upload(
+      api_token: "05479798dc670ef217a1818f4123112f1e9b8dcd",
+      owner_name: "felixm",
+      app_name: 'mb-android',
+      apk: ENV['ANDROID_APK_PATH']
+    )
   end
 
   lane :deploy_local do |options|
