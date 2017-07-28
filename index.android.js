@@ -11,6 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
+import codePush from "react-native-code-push";
 
 export default class mb extends Component {
   render() {
@@ -50,4 +51,7 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('mb', () => mb);
+AppRegistry.registerComponent('mb', () => codePush({
+	updateDialog: true,
+  installMode: codePush.InstallMode.IMMEDIATE
+})(mb);
