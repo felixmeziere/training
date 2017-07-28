@@ -94,8 +94,8 @@ platform :ios do
   end
 
   lane :deploy do |options|
-    # setup
-    # build
+    setup
+    build
     mobile_center_upload(
       api_token: '05479798dc670ef217a1818f4123112f1e9b8dcd',
       owner_name: 'felixm',
@@ -129,7 +129,7 @@ platform :android do
   end
 
   lane :deploy do |options|
-    # build
+    build
     mobile_center_upload(
       api_token: "05479798dc670ef217a1818f4123112f1e9b8dcd",
       owner_name: "felixm",
